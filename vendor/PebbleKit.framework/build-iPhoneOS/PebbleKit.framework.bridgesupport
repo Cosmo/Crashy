@@ -1,0 +1,633 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<struct name='GPoint' type='{GPoint=&quot;x&quot;s&quot;y&quot;s}'>
+<field declared_type='int16_t' name='x' type='s'/>
+<field declared_type='int16_t' name='y' type='s'/>
+</struct>
+<struct name='GRect' type='{GRect=&quot;origin&quot;{GPoint=&quot;x&quot;s&quot;y&quot;s}&quot;size&quot;{GSize=&quot;w&quot;s&quot;h&quot;s}}'>
+<field declared_type='GPoint' name='origin' type='{GPoint=&quot;x&quot;s&quot;y&quot;s}'/>
+<field declared_type='GSize' name='size' type='{GSize=&quot;w&quot;s&quot;h&quot;s}'/>
+</struct>
+<struct name='GSize' type='{GSize=&quot;w&quot;s&quot;h&quot;s}'>
+<field declared_type='int16_t' name='w' type='s'/>
+<field declared_type='int16_t' name='h' type='s'/>
+</struct>
+<constant declared_type='NSString*' name='PBErrorDomain' type='@'/>
+<constant declared_type='NSNumber*' name='PBGolfBackKey' type='@'/>
+<constant declared_type='NSNumber*' name='PBGolfFrontKey' type='@'/>
+<constant declared_type='NSNumber*' name='PBGolfHoleKey' type='@'/>
+<constant declared_type='NSNumber*' name='PBGolfMidKey' type='@'/>
+<constant declared_type='NSNumber*' name='PBGolfParKey' type='@'/>
+<constant declared_type='NSData*' name='PBGolfUUID' type='@'/>
+<constant declared_type='int' name='PBLogLevel' type='i'/>
+<constant declared_type='NSNumber*' name='PBSportsActivityStateKey' type='@'/>
+<constant declared_type='NSNumber*' name='PBSportsDataKey' type='@'/>
+<constant declared_type='NSNumber*' name='PBSportsDistanceKey' type='@'/>
+<constant declared_type='NSNumber*' name='PBSportsTimeKey' type='@'/>
+<constant declared_type='NSData*' name='PBSportsUUID' type='@'/>
+<enum name='FirmwareMetadataPlatformPebbleOneBigboard' value='255'/>
+<enum name='FirmwareMetadataPlatformPebbleOneBigboard2' value='254'/>
+<enum name='FirmwareMetadataPlatformPebbleOneEV1' value='1'/>
+<enum name='FirmwareMetadataPlatformPebbleOneEV2' value='2'/>
+<enum name='FirmwareMetadataPlatformPebbleOneEV2_3' value='3'/>
+<enum name='FirmwareMetadataPlatformPebbleOneEV2_4' value='4'/>
+<enum name='FirmwareMetadataPlatformPebbleOnePointFive' value='5'/>
+<enum name='FirmwareMetadataPlatformPebbleTwoPointZero' value='6'/>
+<enum name='FirmwareMetadataPlatformUnknown' value='0'/>
+<enum name='GolfAppCommandNext' value='2'/>
+<enum name='GolfAppCommandPrevious' value='1'/>
+<enum name='GolfAppCommandSelect' value='3'/>
+<enum name='PBAppStateNotRunning' value='0'/>
+<enum name='PBAppStateRunning' value='1'/>
+<enum name='PBDataLoggingTypeByteArray' value='0'/>
+<enum name='PBDataLoggingTypeInt' value='3'/>
+<enum name='PBDataLoggingTypeUInt' value='2'/>
+<enum name='PBErrorCodeAppMessageAckTimeout' value='10'/>
+<enum name='PBErrorCodeAppMessageRejected' value='9'/>
+<enum name='PBErrorCodeCannotCreateSessionWhileClosing' value='7'/>
+<enum name='PBErrorCodeDictionaryInternalConsistency' value='13'/>
+<enum name='PBErrorCodeDictionaryUnsupportedKeyClass' value='11'/>
+<enum name='PBErrorCodeDictionaryUnsupportedValueClass' value='12'/>
+<enum name='PBErrorCodeDownloadFailed' value='20'/>
+<enum name='PBErrorCodeEndpointDisallowed' value='5'/>
+<enum name='PBErrorCodeErrorCreatingSession' value='1'/>
+<enum name='PBErrorCodeInputStreamError' value='3'/>
+<enum name='PBErrorCodeInvalidArguments' value='14'/>
+<enum name='PBErrorCodeNoAppUUID' value='8'/>
+<enum name='PBErrorCodeNoSupportedProtocolsInInfoPlist' value='0'/>
+<enum name='PBErrorCodeOutputStreamError' value='2'/>
+<enum name='PBErrorCodePebbleAppEmptyResponse' value='17'/>
+<enum name='PBErrorCodePebbleAppRequestTimeout' value='16'/>
+<enum name='PBErrorCodePebbleAppUnexpectedResponse' value='18'/>
+<enum name='PBErrorCodePebbleAppUnreachable' value='15'/>
+<enum name='PBErrorCodePebbleNotConnected' value='21'/>
+<enum name='PBErrorCodeSendMessageTimeout' value='4'/>
+<enum name='PBErrorCodeServerNotAvailable' value='19'/>
+<enum name='PBErrorCodeVersionInfoTimeout' value='6'/>
+<enum name='PBNumPollRemoteServices' value='2'/>
+<enum name='PBPollRemoteServiceDataLogging' value='1'/>
+<enum name='PBPollRemoteServiceMail' value='0'/>
+<enum name='PBWSLOG_CONTEXT' value='1'/>
+<enum name='SportsAppActivityStateEnd' value='3'/>
+<enum name='SportsAppActivityStateInit' value='0'/>
+<enum name='SportsAppActivityStatePaused' value='2'/>
+<enum name='SportsAppActivityStateRunning' value='1'/>
+<class name='NSData'>
+<method selector='dictionaryFromPebbleDictionaryDataWithError:'>
+<arg declared_type='NSError**' index='0' name='error' type='^@'/>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+</class>
+<class name='NSDictionary'>
+<method selector='pebbleDictionaryData:'>
+<arg declared_type='NSError**' index='0' name='error' type='^@'/>
+<retval declared_type='NSData*' type='@'/>
+</method>
+</class>
+<class name='NSError'>
+<method class_method='true' selector='pebbleErrorWithCode:'>
+<arg declared_type='PBErrorCode' index='0' name='code' type='i'/>
+<retval declared_type='NSError*' type='@'/>
+</method>
+<method class_method='true' selector='pebbleErrorWithCode:underLyingError:'>
+<arg declared_type='PBErrorCode' index='0' name='code' type='i'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='NSError*' type='@'/>
+</method>
+</class>
+<class name='NSNumber'>
+<method selector='int16Value'>
+<retval declared_type='int16_t' type='s'/>
+</method>
+<method selector='int32Value'>
+<retval declared_type='int32_t' type='i'/>
+</method>
+<method selector='int8Value'>
+<retval declared_type='int8_t' type='c'/>
+</method>
+<method selector='isFloat'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isSigned'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method class_method='true' selector='numberWithInt16:'>
+<arg declared_type='int16_t' index='0' name='value' type='s'/>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method class_method='true' selector='numberWithInt32:'>
+<arg declared_type='int32_t' index='0' name='value' type='i'/>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method class_method='true' selector='numberWithInt8:'>
+<arg declared_type='int8_t' index='0' name='value' type='c'/>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method class_method='true' selector='numberWithUint16:'>
+<arg declared_type='uint16_t' index='0' name='value' type='S'/>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method class_method='true' selector='numberWithUint32:'>
+<arg declared_type='uint32_t' index='0' name='value' type='I'/>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method class_method='true' selector='numberWithUint8:'>
+<arg declared_type='uint8_t' index='0' name='value' type='C'/>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method selector='uint16Value'>
+<retval declared_type='uint16_t' type='S'/>
+</method>
+<method selector='uint32Value'>
+<retval declared_type='uint32_t' type='I'/>
+</method>
+<method selector='uint8Value'>
+<retval declared_type='uint8_t' type='C'/>
+</method>
+<method selector='width'>
+<retval declared_type='uint8_t' type='C'/>
+</method>
+</class>
+<class name='NSObject'>
+<method selector='dataLoggingService:hasByteArrays:numberOfItems:forDataLoggingSession:'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='UInt8*' index='1' name='bytes' type='*'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasSInt16s:numberOfItems:forDataLoggingSession:'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='SInt16*' index='1' name='data' type='^s'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasSInt32s:numberOfItems:forDataLoggingSession:'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='SInt32*' index='1' name='data' type='^i'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasSInt8s:numberOfItems:forDataLoggingSession:'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='SInt8*' index='1' name='data' type='*'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasUInt16s:numberOfItems:forDataLoggingSession:'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='UInt16*' index='1' name='data' type='^S'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasUInt32s:numberOfItems:forDataLoggingSession:'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='UInt32*' index='1' name='data' type='^I'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasUInt8s:numberOfItems:forDataLoggingSession:'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='UInt8*' index='1' name='data' type='*'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:sessionDidFinish:'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='1' name='session' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='pebbleCentral:watchDidConnect:isNew:'>
+<arg declared_type='PBPebbleCentral*' index='0' name='central' type='@'/>
+<arg declared_type='PBWatch*' index='1' name='watch' type='@'/>
+<arg declared_type='BOOL' index='2' name='isNew' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='pebbleCentral:watchDidDisconnect:'>
+<arg declared_type='PBPebbleCentral*' index='0' name='central' type='@'/>
+<arg declared_type='PBWatch*' index='1' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='watch:handleError:'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='watchDidCloseSession:'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='watchDidDisconnect:'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='watchDidOpenSession:'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='watchWillResetSession:'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='PBBitmap'>
+<method selector='bounds'>
+<retval declared_type='GRect' type='{GRect={GPoint=ss}{GSize=ss}}'/>
+</method>
+<method selector='infoFlags'>
+<retval declared_type='uint16_t' type='S'/>
+</method>
+<method class_method='true' selector='pebbleBitmapWithUIImage:'>
+<arg declared_type='UIImage*' index='0' name='image' type='@'/>
+<retval declared_type='PBBitmap*' type='@'/>
+</method>
+<method selector='pixelData'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method selector='rowSizeBytes'>
+<retval declared_type='uint16_t' type='S'/>
+</method>
+</class>
+<class name='PBDataLoggingService'>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='pollForData'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegateQueue:'>
+<arg declared_type='dispatch_queue_t' index='0' name='delegateQueue' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='PBDataLoggingSessionMetadata'>
+<method selector='isEqualToDataLoggingSessionMetadata:'>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='0' name='sessionMetadata' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='itemSize'>
+<retval declared_type='UInt16' type='S'/>
+</method>
+<method class_method='true' selector='metadataWithTag:timestamp:type:itemSize:serialNumber:'>
+<arg declared_type='UInt32' index='0' name='tag' type='L' type64='I'/>
+<arg declared_type='UInt32' index='1' name='timestamp' type='L' type64='I'/>
+<arg declared_type='PBDataLoggingType' index='2' name='type' type='C'/>
+<arg declared_type='UInt16' index='3' name='itemSize' type='S'/>
+<arg declared_type='NSString*' index='4' name='serialNumber' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='serialNumber'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='tag'>
+<retval declared_type='UInt32' type='L' type64='I'/>
+</method>
+<method selector='timestamp'>
+<retval declared_type='UInt32' type='L' type64='I'/>
+</method>
+<method selector='type'>
+<retval declared_type='PBDataLoggingType' type='C'/>
+</method>
+</class>
+<class name='PBFirmwareMetadata'>
+<method selector='hardwarePlatform'>
+<retval declared_type='FirmwareMetadataPlatform' type='i'/>
+</method>
+<method class_method='true' selector='hardwarePlatformToString:'>
+<arg declared_type='FirmwareMetadataPlatform' index='0' name='hardwarePlatform' type='i'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='isRecoveryFirmware'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method class_method='true' selector='stringToHardwarePlatform:'>
+<arg declared_type='NSString*' index='0' name='hardwarePlatformString' type='@'/>
+<retval declared_type='FirmwareMetadataPlatform' type='i'/>
+</method>
+<method selector='version'>
+<retval declared_type='PBFirmwareVersion*' type='@'/>
+</method>
+</class>
+<class name='PBFirmwareVersion'>
+<method selector='commitHash'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='compare:'>
+<arg declared_type='PBFirmwareVersion*' index='0' name='aVersion' type='@'/>
+<retval declared_type='NSComparisonResult' type='i' type64='q'/>
+</method>
+<method class_method='true' selector='firmwareVersionWithOS:major:minor:suffix:commitHash:timestamp:'>
+<arg declared_type='NSInteger' index='0' name='os' type='i' type64='q'/>
+<arg declared_type='NSInteger' index='1' name='major' type='i' type64='q'/>
+<arg declared_type='NSInteger' index='2' name='minor' type='i' type64='q'/>
+<arg declared_type='NSString*' index='3' name='suffix' type='@'/>
+<arg declared_type='NSString*' index='4' name='commitHash' type='@'/>
+<arg declared_type='UInt32' index='5' name='timestamp' type='L' type64='I'/>
+<retval declared_type='PBFirmwareVersion*' type='@'/>
+</method>
+<method class_method='true' selector='firmwareVersionWithTag:commitHash:timestamp:'>
+<arg declared_type='NSString*' index='0' name='tag' type='@'/>
+<arg declared_type='NSString*' index='1' name='commitHash' type='@'/>
+<arg declared_type='UInt32' index='2' name='timestamp' type='L' type64='I'/>
+<retval declared_type='PBFirmwareVersion*' type='@'/>
+</method>
+<method selector='isEqualOrNewer:'>
+<arg declared_type='PBFirmwareVersion*' index='0' name='other' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isEqualVersionOnly:'>
+<arg declared_type='PBFirmwareVersion*' index='0' name='other' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isNewer:'>
+<arg declared_type='PBFirmwareVersion*' index='0' name='other' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='major'>
+<retval declared_type='NSInteger' type='i' type64='q'/>
+</method>
+<method selector='minor'>
+<retval declared_type='NSInteger' type='i' type64='q'/>
+</method>
+<method selector='os'>
+<retval declared_type='NSInteger' type='i' type64='q'/>
+</method>
+<method selector='suffix'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='tag'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='timestamp'>
+<retval declared_type='UInt32' type='L' type64='I'/>
+</method>
+</class>
+<class name='PBPebbleCentral'>
+<method selector='appUUID'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method selector='connectedWatches'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='dataLoggingService'>
+<retval declared_type='PBDataLoggingService*' type='@'/>
+</method>
+<method class_method='true' selector='defaultCentral'>
+<retval declared_type='PBPebbleCentral*' type='@'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='hasValidAppUUID'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='installMobileApp'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='isMobileAppInstalled'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='lastConnectedWatch'>
+<retval declared_type='PBWatch*' type='@'/>
+</method>
+<method selector='registeredWatches'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='setAppUUID:'>
+<arg declared_type='NSData*' index='0' name='appUUID' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='setDebugLogsEnabled:'>
+<arg declared_type='BOOL' index='0' name='logsEnabled' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='unregisterAllWatches'>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='PBResourceMetadata'>
+<method selector='crc'>
+<retval declared_type='UInt32' type='L' type64='I'/>
+</method>
+<method selector='friendlyVersion'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='isValid'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='timestamp'>
+<retval declared_type='UInt32' type='L' type64='I'/>
+</method>
+</class>
+<class name='PBSportsUpdate'>
+<method selector='data'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='dictionary'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='distance'>
+<retval declared_type='float' type='f'/>
+</method>
+<method selector='setData:'>
+<arg declared_type='float' index='0' name='data' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDistance:'>
+<arg declared_type='float' index='0' name='distance' type='f'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setTime:'>
+<arg declared_type='NSTimeInterval' index='0' name='time' type='d'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='time'>
+<retval declared_type='NSTimeInterval' type='d'/>
+</method>
+<method class_method='true' selector='timeStringFromFloat:'>
+<arg declared_type='float' index='0' name='seconds' type='f'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method class_method='true' selector='updateWithTime:distance:data:'>
+<arg declared_type='NSTimeInterval' index='0' name='time' type='d'/>
+<arg declared_type='float' index='1' name='distance' type='f'/>
+<arg declared_type='float' index='2' name='data' type='f'/>
+<retval declared_type='PBSportsUpdate*' type='@'/>
+</method>
+</class>
+<class name='PBVersionInfo'>
+<method selector='bootloaderVersion'>
+<retval declared_type='UInt32' type='L' type64='I'/>
+</method>
+<method selector='deviceAddress'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method selector='hardwareVersion'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='hasRecoveryFirmware'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='hasSystemResources'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='recoveryFirmwareMetadata'>
+<retval declared_type='PBFirmwareMetadata*' type='@'/>
+</method>
+<method selector='runningFirmwareMetadata'>
+<retval declared_type='PBFirmwareMetadata*' type='@'/>
+</method>
+<method selector='serialNumber'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='systemResources'>
+<retval declared_type='PBResourceMetadata*' type='@'/>
+</method>
+</class>
+<class name='PBWatch'>
+<method selector='closeSession:'>
+<arg declared_type='void (^)(void)' function_pointer='true' index='0' name='onDone' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='friendlyDescription'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='isConnected'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='lastConnectedDate'>
+<retval declared_type='NSDate*' type='@'/>
+</method>
+<method selector='name'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='serialNumber'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setUserInfo:'>
+<arg declared_type='id' index='0' name='userInfo' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='userInfo'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='versionInfo'>
+<retval declared_type='PBVersionInfo*' type='@'/>
+</method>
+</class>
+<informal_protocol name='PBDataLoggingServiceDelegate'>
+<method selector='dataLoggingService:hasByteArrays:numberOfItems:forDataLoggingSession:' type='B24@0:4@8r*12S16@20' type64='B44@0:8@16r*24S32@36'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='UInt8*' index='1' name='bytes' type='*'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasSInt16s:numberOfItems:forDataLoggingSession:' type='B24@0:4@8r^s12S16@20' type64='B44@0:8@16r^s24S32@36'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='SInt16*' index='1' name='data' type='^s'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasSInt32s:numberOfItems:forDataLoggingSession:' type='B24@0:4@8r^i12S16@20' type64='B44@0:8@16r^i24S32@36'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='SInt32*' index='1' name='data' type='^i'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasSInt8s:numberOfItems:forDataLoggingSession:' type='B24@0:4@8r*12S16@20' type64='B44@0:8@16r*24S32@36'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='SInt8*' index='1' name='data' type='*'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasUInt16s:numberOfItems:forDataLoggingSession:' type='B24@0:4@8r^S12S16@20' type64='B44@0:8@16r^S24S32@36'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='UInt16*' index='1' name='data' type='^S'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasUInt32s:numberOfItems:forDataLoggingSession:' type='B24@0:4@8r^I12S16@20' type64='B44@0:8@16r^I24S32@36'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='UInt32*' index='1' name='data' type='^I'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:hasUInt8s:numberOfItems:forDataLoggingSession:' type='B24@0:4@8r*12S16@20' type64='B44@0:8@16r*24S32@36'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg const='true' declared_type='UInt8*' index='1' name='data' type='*'/>
+<arg declared_type='UInt16' index='2' name='numberOfItems' type='S'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='3' name='session' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='dataLoggingService:sessionDidFinish:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='id' index='0' name='service' type='@'/>
+<arg declared_type='PBDataLoggingSessionMetadata*' index='1' name='session' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='PBPebbleCentralDelegate'>
+<method selector='pebbleCentral:watchDidConnect:isNew:' type='v20@0:4@8@12B16' type64='v36@0:8@16@24B32'>
+<arg declared_type='PBPebbleCentral*' index='0' name='central' type='@'/>
+<arg declared_type='PBWatch*' index='1' name='watch' type='@'/>
+<arg declared_type='BOOL' index='2' name='isNew' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='pebbleCentral:watchDidDisconnect:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PBPebbleCentral*' index='0' name='central' type='@'/>
+<arg declared_type='PBWatch*' index='1' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='PBWatchDelegate'>
+<method selector='watch:handleError:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='watchDidCloseSession:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='watchDidDisconnect:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='watchDidOpenSession:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='watchWillResetSession:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='PBWatch*' index='0' name='watch' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+</signatures>

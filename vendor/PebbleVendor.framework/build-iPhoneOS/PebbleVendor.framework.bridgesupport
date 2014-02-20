@@ -1,0 +1,675 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<enum name='DDLogMessageCopyFile' value='1'/>
+<enum name='DDLogMessageCopyFunction' value='2'/>
+<enum name='DEFAULT_LOG_MAX_FILE_SIZE' value='1048576'/>
+<enum name='DEFAULT_LOG_MAX_NUM_LOG_FILES' value='5'/>
+<enum name='DEFAULT_LOG_ROLLING_FREQUENCY' value='86400'/>
+<enum name='LOG_ASYNC_DEBUG' value='1'/>
+<enum name='LOG_ASYNC_ENABLED' value='1'/>
+<enum name='LOG_ASYNC_ERROR' value='0'/>
+<enum name='LOG_ASYNC_INFO' value='1'/>
+<enum name='LOG_ASYNC_VERBOSE' value='1'/>
+<enum name='LOG_ASYNC_WARN' value='1'/>
+<enum name='LOG_CONTEXT_ALL' value='2147483647'/>
+<enum name='LOG_FLAG_DEBUG' value='8'/>
+<enum name='LOG_FLAG_ERROR' value='1'/>
+<enum name='LOG_FLAG_INFO' value='4'/>
+<enum name='LOG_FLAG_VERBOSE' value='16'/>
+<enum name='LOG_FLAG_WARN' value='2'/>
+<enum name='LOG_LEVEL_DEBUG' value='15'/>
+<enum name='LOG_LEVEL_ERROR' value='1'/>
+<enum name='LOG_LEVEL_INFO' value='7'/>
+<enum name='LOG_LEVEL_OFF' value='0'/>
+<enum name='LOG_LEVEL_VERBOSE' value='31'/>
+<enum name='LOG_LEVEL_WARN' value='3'/>
+<enum name='UIDeviceFamilyAppleTV' value='3'/>
+<enum name='UIDeviceFamilyUnknown' value='4'/>
+<enum name='UIDeviceFamilyiPad' value='2'/>
+<enum name='UIDeviceFamilyiPhone' value='0'/>
+<enum name='UIDeviceFamilyiPod' value='1'/>
+<function name='DDExtractFileNameWithoutExtension'>
+<arg const='true' declared_type='char*' name='filePath' type='*'/>
+<arg declared_type='BOOL' name='copy' type='B'/>
+<retval declared_type='NSString*' type='@'/>
+</function>
+<function name='createCollectableCFMutableDictionary'>
+<arg declared_type='CFMutableDictionaryRef*' name='dictionary' type='^^{__CFDictionary}'/>
+<arg declared_type='NSUInteger' name='initialCapacity' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</function>
+<class name='CHMultiDictionary'>
+<method selector='addObject:forKey:'>
+<arg declared_type='id' index='0' name='anObject' type='@'/>
+<arg declared_type='id' index='1' name='aKey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='addObjects:forKey:'>
+<arg declared_type='NSSet*' index='0' name='objectSet' type='@'/>
+<arg declared_type='id' index='1' name='aKey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='countForAllKeys'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='countForKey:'>
+<arg declared_type='id' index='0' name='aKey' type='@'/>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='objectsForKey:'>
+<arg declared_type='id' index='0' name='aKey' type='@'/>
+<retval declared_type='NSSet*' type='@'/>
+</method>
+<method selector='removeObject:forKey:'>
+<arg declared_type='id' index='0' name='anObject' type='@'/>
+<arg declared_type='id' index='1' name='aKey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='removeObjectsForKey:'>
+<arg declared_type='id' index='0' name='aKey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setObjects:forKey:'>
+<arg declared_type='NSSet*' index='0' name='objectSet' type='@'/>
+<arg declared_type='id' index='1' name='aKey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='CHMutableDictionary'>
+<method selector='count'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='initWithCapacity:'>
+<arg declared_type='NSUInteger' index='0' name='numItems' type='I' type64='Q'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='keyEnumerator'>
+<retval declared_type='NSEnumerator*' type='@'/>
+</method>
+<method selector='objectForKey:'>
+<arg declared_type='id' index='0' name='aKey' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='removeAllObjects'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='removeObjectForKey:'>
+<arg declared_type='id' index='0' name='aKey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setObject:forKey:'>
+<arg declared_type='id' index='0' name='anObject' type='@'/>
+<arg declared_type='id' index='1' name='aKey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='DDASLLogger'>
+<method class_method='true' selector='sharedInstance'>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='DDAbstractLogger'>
+<method selector='isOnGlobalLoggingQueue'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isOnInternalLoggerQueue'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='logFormatter'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='setLogFormatter:'>
+<arg declared_type='id' index='0' name='formatter' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='DDFileLogger'>
+<method selector='init'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithLogFileManager:'>
+<arg declared_type='id' index='0' name='logFileManager' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='logFileManager'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='maximumFileSize'>
+<retval declared_type='unsigned long long' type='Q'/>
+</method>
+<method selector='rollLogFile'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='rollLogFileWithCompletionBlock:'>
+<arg declared_type='void (^)()' function_pointer='true' index='0' name='completionBlock' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='rollingFrequency'>
+<retval declared_type='NSTimeInterval' type='d'/>
+</method>
+<method selector='setLogFileManager:'>
+<arg declared_type='id' index='0' name='logFileManager' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMaximumFileSize:'>
+<arg declared_type='unsigned long long' index='0' name='maximumFileSize' type='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setRollingFrequency:'>
+<arg declared_type='NSTimeInterval' index='0' name='rollingFrequency' type='d'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='DDLog'>
+<method class_method='true' selector='addLogger:'>
+<arg declared_type='id' index='0' name='logger' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='addLogger:withLogLevel:'>
+<arg declared_type='id' index='0' name='logger' type='@'/>
+<arg declared_type='int' index='1' name='logLevel' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='flushLog'>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='log:level:flag:context:file:function:line:tag:format:' variadic='true'>
+<arg declared_type='BOOL' index='0' name='synchronous' type='B'/>
+<arg declared_type='int' index='1' name='level' type='i'/>
+<arg declared_type='int' index='2' name='flag' type='i'/>
+<arg declared_type='int' index='3' name='context' type='i'/>
+<arg const='true' declared_type='char*' index='4' name='file' type='*'/>
+<arg const='true' declared_type='char*' index='5' name='function' type='*'/>
+<arg declared_type='int' index='6' name='line' type='i'/>
+<arg declared_type='id' index='7' name='tag' type='@'/>
+<arg declared_type='NSString*' index='8' name='format' printf_format='true' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='log:level:flag:context:file:function:line:tag:format:args:'>
+<arg declared_type='BOOL' index='0' name='asynchronous' type='B'/>
+<arg declared_type='int' index='1' name='level' type='i'/>
+<arg declared_type='int' index='2' name='flag' type='i'/>
+<arg declared_type='int' index='3' name='context' type='i'/>
+<arg const='true' declared_type='char*' index='4' name='file' type='*'/>
+<arg const='true' declared_type='char*' index='5' name='function' type='*'/>
+<arg declared_type='int' index='6' name='line' type='i'/>
+<arg declared_type='id' index='7' name='tag' type='@'/>
+<arg declared_type='NSString*' index='8' name='format' type='@'/>
+<arg declared_type='va_list' declared_type64='__va_list_tag*' index='9' name='argList' type='*' type64='^{__va_list_tag=II^v^v}'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='logLevelForClass:'>
+<arg declared_type='Class' index='0' name='aClass' type='#'/>
+<retval declared_type='int' type='i'/>
+</method>
+<method class_method='true' selector='logLevelForClassWithName:'>
+<arg declared_type='NSString*' index='0' name='aClassName' type='@'/>
+<retval declared_type='int' type='i'/>
+</method>
+<method class_method='true' selector='loggingQueue'>
+<retval declared_type='dispatch_queue_t' type='@'/>
+</method>
+<method class_method='true' selector='registeredClassNames'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method class_method='true' selector='registeredClasses'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method class_method='true' selector='removeAllLoggers'>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='removeLogger:'>
+<arg declared_type='id' index='0' name='logger' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='setLogLevel:forClass:'>
+<arg declared_type='int' index='0' name='logLevel' type='i'/>
+<arg declared_type='Class' index='1' name='aClass' type='#'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='setLogLevel:forClassWithName:'>
+<arg declared_type='int' index='0' name='logLevel' type='i'/>
+<arg declared_type='NSString*' index='1' name='aClassName' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='DDLogFileFormatterDefault'>
+<method selector='init'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithDateFormatter:'>
+<arg declared_type='NSDateFormatter*' index='0' name='dateFormatter' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='DDLogFileInfo'>
+<method selector='addExtensionAttributeWithName:'>
+<arg declared_type='NSString*' index='0' name='attrName' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='age'>
+<retval declared_type='NSTimeInterval' type='d'/>
+</method>
+<method selector='creationDate'>
+<retval declared_type='NSDate*' type='@'/>
+</method>
+<method selector='fileAttributes'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='fileName'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='filePath'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='fileSize'>
+<retval declared_type='unsigned long long' type='Q'/>
+</method>
+<method selector='hasExtensionAttributeWithName:'>
+<arg declared_type='NSString*' index='0' name='attrName' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='initWithFilePath:'>
+<arg declared_type='NSString*' index='0' name='filePath' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='isArchived'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method class_method='true' selector='logFileWithPath:'>
+<arg declared_type='NSString*' index='0' name='filePath' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='modificationDate'>
+<retval declared_type='NSDate*' type='@'/>
+</method>
+<method selector='removeExtensionAttributeWithName:'>
+<arg declared_type='NSString*' index='0' name='attrName' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='renameFile:'>
+<arg declared_type='NSString*' index='0' name='newFileName' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='reset'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='reverseCompareByCreationDate:'>
+<arg declared_type='DDLogFileInfo*' index='0' name='another' type='@'/>
+<retval declared_type='NSComparisonResult' type='i' type64='q'/>
+</method>
+<method selector='reverseCompareByModificationDate:'>
+<arg declared_type='DDLogFileInfo*' index='0' name='another' type='@'/>
+<retval declared_type='NSComparisonResult' type='i' type64='q'/>
+</method>
+<method selector='setCreationDate:'>
+<arg declared_type='NSDate*' index='0' name='creationDate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFileAttributes:'>
+<arg declared_type='NSDictionary*' index='0' name='fileAttributes' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFileName:'>
+<arg declared_type='NSString*' index='0' name='fileName' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFilePath:'>
+<arg declared_type='NSString*' index='0' name='filePath' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setIsArchived:'>
+<arg declared_type='BOOL' index='0' name='isArchived' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setModificationDate:'>
+<arg declared_type='NSDate*' index='0' name='modificationDate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='DDLogFileManagerDefault'>
+<method selector='init'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithLogsDirectory:'>
+<arg declared_type='NSString*' index='0' name='logsDirectory' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='isLogFile:'>
+<arg declared_type='NSString*' index='0' name='fileName' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='newLogFileName'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='DDLogMessage'>
+<method selector='fileName'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='initWithLogMsg:level:flag:context:file:function:line:tag:options:'>
+<arg declared_type='NSString*' index='0' name='logMsg' type='@'/>
+<arg declared_type='int' index='1' name='logLevel' type='i'/>
+<arg declared_type='int' index='2' name='logFlag' type='i'/>
+<arg declared_type='int' index='3' name='logContext' type='i'/>
+<arg const='true' declared_type='char*' index='4' name='file' type='*'/>
+<arg const='true' declared_type='char*' index='5' name='function' type='*'/>
+<arg declared_type='int' index='6' name='line' type='i'/>
+<arg declared_type='id' index='7' name='tag' type='@'/>
+<arg declared_type='DDLogMessageOptions' index='8' name='optionsMask' type='i'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='methodName'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='threadID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='DDTTYLogger'>
+<method selector='clearAllColors'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='clearColorsForAllFlags'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='clearColorsForAllTags'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='clearColorsForFlag:'>
+<arg declared_type='int' index='0' name='mask' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='clearColorsForFlag:context:'>
+<arg declared_type='int' index='0' name='mask' type='i'/>
+<arg declared_type='int' index='1' name='context' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='clearColorsForTag:'>
+<arg declared_type='id' index='0' name='tag' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='colorsEnabled'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='setColorsEnabled:'>
+<arg declared_type='BOOL' index='0' name='colorsEnabled' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setForegroundColor:backgroundColor:forFlag:'>
+<arg declared_type='UIColor*' index='0' name='txtColor' type='@'/>
+<arg declared_type='UIColor*' index='1' name='bgColor' type='@'/>
+<arg declared_type='int' index='2' name='mask' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setForegroundColor:backgroundColor:forFlag:context:'>
+<arg declared_type='UIColor*' index='0' name='txtColor' type='@'/>
+<arg declared_type='UIColor*' index='1' name='bgColor' type='@'/>
+<arg declared_type='int' index='2' name='mask' type='i'/>
+<arg declared_type='int' index='3' name='ctxt' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setForegroundColor:backgroundColor:forTag:'>
+<arg declared_type='UIColor*' index='0' name='txtColor' type='@'/>
+<arg declared_type='UIColor*' index='1' name='bgColor' type='@'/>
+<arg declared_type='id' index='2' name='tag' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='sharedInstance'>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='NSData'>
+<method selector='hexString'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='NSJSONSerialization'>
+<method class_method='true' selector='JSONObjectWithString:options:error:'>
+<arg declared_type='NSString*' index='0' name='string' type='@'/>
+<arg declared_type='NSJSONReadingOptions' index='1' name='opt' type='I' type64='Q'/>
+<arg declared_type='NSError**' index='2' name='error' type='^@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='ensureObjectForKey:inDictionary:hasExpectedType:nullAllowed:'>
+<arg declared_type='NSString*' index='0' name='key' type='@'/>
+<arg declared_type='NSDictionary*' index='1' name='dictionary' type='@'/>
+<arg declared_type='Class' index='2' name='cls' type='#'/>
+<arg declared_type='BOOL' index='3' name='nullAllowed' type='B'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='stringWithNSDictionary:'>
+<arg declared_type='NSDictionary*' index='0' name='dictionary' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='NSObject'>
+<method selector='createNewLogFile'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method class_method='true' selector='ddLogLevel'>
+<retval declared_type='int' type='i'/>
+</method>
+<method class_method='true' selector='ddSetLogLevel:'>
+<arg declared_type='int' index='0' name='logLevel' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didAddLogger'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didAddToLogger:'>
+<arg declared_type='id' index='0' name='logger' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didArchiveLogFile:'>
+<arg declared_type='NSString*' index='0' name='logFilePath' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didRollAndArchiveLogFile:'>
+<arg declared_type='NSString*' index='0' name='logFilePath' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='flush'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='formatLogMessage:'>
+<arg declared_type='DDLogMessage*' index='0' name='logMessage' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='logFormatter'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='logMessage:'>
+<arg declared_type='DDLogMessage*' index='0' name='logMessage' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='loggerName'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='loggerQueue'>
+<retval declared_type='dispatch_queue_t' type='@'/>
+</method>
+<method selector='logsDirectory'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='maximumNumberOfLogFiles'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='setLogFormatter:'>
+<arg declared_type='id' index='0' name='formatter' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMaximumNumberOfLogFiles:'>
+<arg declared_type='NSUInteger' index='0' name='maximumNumberOfLogFiles' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='sortedLogFileInfos'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='sortedLogFileNames'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='sortedLogFilePaths'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='unsortedLogFileInfos'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='unsortedLogFileNames'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='unsortedLogFilePaths'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='willRemoveFromLogger:'>
+<arg declared_type='id' index='0' name='logger' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='willRemoveLogger'>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='NSString'>
+<method selector='hexData'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+</class>
+<class name='UIDevice'>
+<method selector='busFrequency'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='cpuCount'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='cpuFrequency'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='deviceFamily'>
+<retval declared_type='UIDeviceFamily' type='i'/>
+</method>
+<method selector='freeDiskSpace'>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method selector='hasBluetoothMAP'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='hasRetinaDisplay'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='hwmodel'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='macaddress'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='platform'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='platformString'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='totalDiskSpace'>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+<method selector='totalMemory'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='userMemory'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+</class>
+<informal_protocol name='DDLogFileManager'>
+<method selector='createNewLogFile' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='didArchiveLogFile:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='NSString*' index='0' name='logFilePath' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='didRollAndArchiveLogFile:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='NSString*' index='0' name='logFilePath' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='logsDirectory' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='maximumNumberOfLogFiles' type='I8@0:4' type64='Q16@0:8'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='setMaximumNumberOfLogFiles:' type='v12@0:4I8' type64='v24@0:8Q16'>
+<arg declared_type='NSUInteger' index='0' name='maximumNumberOfLogFiles' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='sortedLogFileInfos' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='sortedLogFileNames' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='sortedLogFilePaths' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='unsortedLogFileInfos' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='unsortedLogFileNames' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='unsortedLogFilePaths' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+</informal_protocol>
+<informal_protocol name='DDLogFormatter'>
+<method selector='didAddToLogger:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='id' index='0' name='logger' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='formatLogMessage:' type='@12@0:4@8' type64='@24@0:8@16'>
+<arg declared_type='DDLogMessage*' index='0' name='logMessage' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='willRemoveFromLogger:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='id' index='0' name='logger' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='DDLogger'>
+<method selector='didAddLogger' type='v8@0:4' type64='v16@0:8'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='flush' type='v8@0:4' type64='v16@0:8'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='logFormatter' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='logMessage:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='DDLogMessage*' index='0' name='logMessage' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='loggerName' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='loggerQueue' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='dispatch_queue_t' type='@'/>
+</method>
+<method selector='setLogFormatter:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='id' index='0' name='formatter' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='willRemoveLogger' type='v8@0:4' type64='v16@0:8'>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='DDRegisteredDynamicLogging'>
+<method class_method='true' selector='ddLogLevel' type='i8@0:4' type64='i16@0:8'>
+<retval declared_type='int' type='i'/>
+</method>
+<method class_method='true' selector='ddSetLogLevel:' type='v12@0:4i8' type64='v20@0:8i16'>
+<arg declared_type='int' index='0' name='logLevel' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+</signatures>

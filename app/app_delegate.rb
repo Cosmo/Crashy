@@ -1,4 +1,5 @@
 class AppDelegate
+  attr_accessor :window
   attr_accessor :connectedWatch
   
   def application(application, didFinishLaunchingWithOptions:launchOptions)
@@ -10,16 +11,22 @@ class AppDelegate
     
     NSLog("Hi there!")
     
-    # Weeee, the fun begins!
-    receiveUpdateHandler = self.connectedWatch.appMessagesAddReceiveUpdateHandler(
-      -> watch, update {
-        NSLog("Received message: %@", update)
-        return true
-      }
-    )
+    # Weeee, the fun begins! (Remove #s to see what's happening)
+    # receiveUpdateHandler = self.connectedWatch.appMessagesAddReceiveUpdateHandler(
+    #   -> watch, update {
+    #     NSLog("Received message: %@", update)
+    #     return true
+    #   }
+    # )
     # Oh crap, its broken.
     
     NSLog("Where am I?!")
+    
+    self.window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
+    viewController = UIViewController.alloc.init
+    viewController.view.backgroundColor = UIColor.whiteColor
+    self.window.rootViewController = viewController
+    self.window.makeKeyAndVisible
     
     true
   end
